@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .menu-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-image: url("https://png.pngtree.com/thumb_back/fw800/background/20230927/pngtree-menu-cards-by-template-vector-image_13370985.jpg");
+            background-size: cover;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .menu-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .menu-header h1 {
+            font-size: 32px;
+            color: #333;
+        }
+        .category {
+            margin-top: 20px;
+        }
+
+        .category h2 {
+            font-size: 24px;
+            color: #444;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #ebbcbc;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .menu-item:hover {
+            background-color: #c29d9d;
+        }
+
+        .menu-item-name {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .menu-item-price {
+            font-size: 18px;
+            color: #333;
+        }
+        body
+        {
+            background-color: #cba5a5;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <div class="menu-header">
+            <h1>Restaurant Menu</h1>
+        </div>
+
+        <div class="category" id="starters">
+            <h2>Starters</h2>
+        </div>
+
+        <div class="category" id="main-course">
+            <h2>Main Course</h2>
+        </div>
+
+        <div class="category" id="rotis">
+            <h2>Rotis</h2>
+        </div>
+
+    </div>
+    <div class="menu-container">
+        <div class="menu-header">
+            <h1>Restaurant Menu</h1>
+        </div>
+
+        <div class="category" id="desserts">
+            <h2>Desserts</h2>
+        </div>
+
+        <div class="category" id="drinks">
+            <h2>Drinks</h2>
+        </div>
+        <div>
+            <h2>Reviews</h2>
+            <ul>
+            <li><b>1.Vijay-5 Stars </b> - “Incredible! This restaurant is a hidden gem. The flavors were bold, and the ingredients tasted so fresh. Service was quick, and the servers were knowledgeable about the menu. A must-try for food lovers!”</li>
+              <li><b>2.	Sohit-4 Stars </b> -“Good spot with a warm vibe. The food was delicious, especially the appetizers. Prices are a little on the higher side, but the quality justifies it. Perfect for a special night out.”</li>
+              <li><b>3.	Dinesh-3 Stars </b> - “Average experience overall. Some dishes were great, while others fell flat. Service was okay, but they could work on being more attentive. It’s a decent place if you’re in the area but not worth a long drive.” </li>
+  
+            </ul>
+          </div>
+
+    </div>
+	
+
+
+
+    <script>
+
+    const menuData = {
+            starters: [
+                { name: "Spring Rolls", price: "Rs.100" },
+                { name: "Spring Rolls", price: "Rs.100" },
+                { name: "Garlic Bread", price: "Rs.80" },
+                { name: "Stuffed Mushrooms", price: "RS.150" },
+            ],
+            mainCourse: [
+                { name: "Grilled Chicken", price: "Rs.200" },
+                { name: "Pasta Alfredo", price: "Rs.220" },
+                { name: "Paneer Tikka", price: "Rs.200" },
+                { name: "Roast Chicken Biryani", price: "Rs.250" },
+                { name: "Punjabi Chicken Biryani", price: "Rs.300" },
+                { name: "Mughalai Chicken Biryani", price: "Rs.320" },
+                { name: "Dilkush Chicken Biryani", price: "Rs.420" },
+                { name: "Mutton Nalli Ghost Biryani", price: "Rs.900" },
+            ],
+            rotis: [
+                { name: "Butter Naan", price: "Rs.60" },
+                { name: "Garlic Roti", price: "Rs.50" },
+                { name: "Tandoori Roti", price: "Rs.50" },
+            ],
+            desserts: [
+                { name: "Chocolate Brownie", price: "Rs.180" },
+                { name: "Cheesecake", price: "Rs.200" },
+                { name: "Gulab Jamun", price: "Rs.150" },
+                { name: "Kunafa", price: "Rs.150" },
+                ],
+            drinks: [
+                { name: "Mango Lassi", price: "Rs.120" },
+                { name: "Cold Coffee", price: "Rs.180" },
+                { name: "Fresh Lime Soda", price: "Rs.50" },
+                { name: "Thums-up", price: "Rs.25" },
+            ]
+        };
+
+    
+
+
+        function renderMenu(categoryId, items) {
+            const categoryDiv = document.getElementById(categoryId);
+            items.forEach(item => {
+                const menuItemDiv = document.createElement('div');
+                menuItemDiv.classList.add('menu-item');
+                
+                const itemName = document.createElement('span');
+                itemName.classList.add('menu-item-name');
+                itemName.textContent = item.name;
+
+                const itemPrice = document.createElement('span');
+                itemPrice.classList.add('menu-item-price');
+                itemPrice.textContent = item.price;
+
+                menuItemDiv.appendChild(itemName);
+                menuItemDiv.appendChild(itemPrice);
+                categoryDiv.appendChild(menuItemDiv);
+            });
+        }
+
+
+        renderMenu('starters', menuData.starters);
+        renderMenu('main-course', menuData.mainCourse);
+        renderMenu('rotis', menuData.rotis);
+        renderMenu('desserts', menuData.desserts);
+        renderMenu('drinks', menuData.drinks);
+    </script>
+</body>
+</html>
